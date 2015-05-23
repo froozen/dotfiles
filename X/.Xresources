@@ -1,0 +1,52 @@
+! Fonts
+! URxvt*font: xft:Tewi:size=7
+! URxvt*boldFont: xft:Tewi:size=7
+
+! Make numpad keys behave the same as the corresponding normal keys
+URxvt.keysym.KP_Add:    +
+URxvt.keysym.KP_Subtract: -
+URxvt.keysym.KP_Multiply: *
+URxvt.keysym.KP_Divide  : /
+URxvt.keysym.KP_Decimal : .
+URxvt.keysym.KP_Separator : ,
+URxvt.keysym.KP_1:      1
+URxvt.keysym.KP_2:      2
+URxvt.keysym.KP_3:      3
+URxvt.keysym.KP_4:      4
+URxvt.keysym.KP_5:      5
+URxvt.keysym.KP_6:      6
+URxvt.keysym.KP_7:      7
+URxvt.keysym.KP_8:      8
+URxvt.keysym.KP_9:      9
+URxvt.keysym.KP_0:      0
+
+! Colorscheme
+*background: #141414
+*foreground: #eeeeee
+*color0:     #000000
+*color1:     #ba3636
+*color2:     #479f76
+*color3:     #839f73
+*color4:     #4a60b2
+*color5:     #8660af
+*color6:     #479cb2
+*color7:     #c3c3c3
+*color8:     #535353
+*color9:     #9b9aa2
+*color10:    #78b1a5
+*color11:    #97b1a4
+*color12:    #7a91c4
+*color13:    #9891c2
+*color14:    #78b0c4
+*color15:    #ffffff
+
+! Some modifications to how it is displayed
+URxvt*scrollBar: False
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: true
+
+! Plugins
+! URxvt*perl-ext-common: default,clipboard,matcher
+! URxvt*perl-ext: default,clipboard,matcher
+! URxvt.url-launcher: /usr/bin/firefox
+! URxvt.matcher.button: 1
