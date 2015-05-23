@@ -3,8 +3,8 @@
 !
 
 ! Fonts
-! URxvt*font: xft:Tewi:size=7
-! URxvt*boldFont: xft:Tewi:size=7
+URxvt*font: xft:Tewi:size=7
+URxvt*boldFont: xft:Tewi:size=7
 
 ! Make numpad keys behave the same as the corresponding normal keys
 URxvt.keysym.KP_Add:    +
