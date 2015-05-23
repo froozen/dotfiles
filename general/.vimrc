@@ -1,3 +1,7 @@
+"
+" ~/.vimrc
+"
+
 set nocompatible
 filetype off
 

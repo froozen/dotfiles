@@ -1,3 +1,7 @@
+#
+# ~/.gitconfig
+#
+
 [user]
     email = fro_ozen@gmx.de
     name = fro_ozen
