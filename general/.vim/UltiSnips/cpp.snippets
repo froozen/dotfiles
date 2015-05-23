@@ -1,0 +1,139 @@
+global !p
+def conditional_text ( actual, required, then, else_v ):
+    if actual == required:
+        return then
+    return else_v
+endglobal
+
+snippet cc "Simple class definition" b
+class ${1:Class_name}$0
+{
+    public:
+        $1 () = default;
+        virtual ~$1 () = default;
+};
+endsnippet
+
+snippet gh "Getter method for header" b
+${1:type} get_${2:attr} () const { return this->$2; }
+endsnippet
+
+snippet gi "Getter method for implementation" b
+${1:`!p snip.rv = snip.basename`}::get_${3:attr} () const
+{
+    return this->$3;
+}
+endsnippet
+
+snippet sh "Setter method for header" b
+void set_${1:attr} ( const ${2:type}& $1 ) { this->$1 = $1; }
+endsnippet
+
+snippet si "Setter method for implementation" b
+void ${1:`!p snip.rv = snip.basename`}::set_${2:attr} ( const ${3:type}& $2 )
+{
+    this->$2 = $2;
+}
+endsnippet
+
+snippet ing "Include statement" b
+#include <${1:header}>
+endsnippet
+
+snippet inl "Include statement" b
+#include "${1:header}"
+endsnippet
+
+snippet mi "Simple method template for implementation" b
+${1:type} ${2:name} (`!p snip.rv = conditional_text (t[3],"",""," ")`${3:args}`!p snip.rv = conditional_text (t[3],"",""," ")`)
+{
+    `!p snip.rv = conditional_text ( t[1], "void", "", "return %s;" % t[1] )`$0
+};
+endsnippet
+
+snippet mh "Simple method template for header" b
+${1:type} ${2:name} (`!p snip.rv = "" if t[3] == "" else " "`${3:args}`!p snip.rv = "" if t[3] == "" else " "`);
+endsnippet
+
+snippet mm "Main method" b
+int main ()
+{
+    $0
+
+    return 0;
+}
+endsnippet
+
+snippet hg "Header guards" b
+#ifndef `!p snip.rv = snip.basename.upper()`_GUARD
+#define `!p snip.rv = snip.basename.upper()`_GUARD
+
+$0
+
+#endif //`!p snip.rv = snip.basename.upper()`_GUARD
+endsnippet
+
+snippet if "Single if clause" b
+if ( ${1:condition} )
+{
+    $2
+}
+endsnippet
+
+snippet ie "If and else" b
+if ( ${1:condition} )
+{
+    $2
+}
+
+else
+{
+    $3
+}
+endsnippet
+
+snippet el "Simple else clause" b
+else
+{
+    $1
+}
+endsnippet
+
+snippet ei "Simple else if clause" b
+else if ( ${1:condition} )
+{
+    $2
+}
+endsnippet
+
+snippet wh "Simple while loop" b
+while ( ${1:condition} )
+{
+    $2
+}
+endsnippet
+
+snippet fc "counting for-loop" b
+for ( int ${1:i} = 0; $1 < ${2:var}; $1++ )
+{
+    $3
+}
+endsnippet
+
+snippet fi "iterating for-loop" b
+for ( auto ${1:it} = ${2:iteratable}.begin (); $1 != $2.end (); $1++ )
+{
+    $0
+}
+endsnippet
+
+snippet ns "namespace" b
+namespace $1
+{
+    $0
+}
+endsnippet
+
+snippet co "cout"
+std::cout << $1 << std::endl;
+endsnippet

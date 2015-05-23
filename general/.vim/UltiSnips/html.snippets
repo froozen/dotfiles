@@ -1,0 +1,35 @@
+snippet html "html document"
+<!DOCTYPE html>
+<html lan="en">
+    <head>
+    $0
+    </head>
+
+    <body>
+    </body>
+</html>
+endsnippet
+
+snippet inl "inline element"
+<${1:type}>$0</$1>
+endsnippet
+
+snippet block "block element"
+<${1:type}>
+    $0
+</$1>
+endsnippet
+
+snippet inla "inline element with attributes"
+<${1:type} ${2:attributes}>$0</$1>
+endsnippet
+
+snippet blocka "block element"
+<${1:type} ${2:attributes}>
+    $0
+</$1>
+endsnippet
+
+snippet com "comment"
+<!-- $0 -->
+endsnippet

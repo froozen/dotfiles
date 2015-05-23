@@ -1,0 +1,11 @@
+snippet module "module and corresponding haddock comment"
+{-|
+Module      : ${1:Module}
+Description : ${2:Short description}
+
+${3:Here is a longer description of this module, containing some
+commentary with @some markup@.}
+-}
+
+module $1 where
+endsnippet
