@@ -1,0 +1,20 @@
+[user]
+    email = fro_ozen@gmx.de
+    name = fro_ozen
+
+[alias]
+    graph = log --oneline --graph
+    commit-count = rev-list HEAD --count
+
+    c = commit
+    a = add
+    r = remove
+    b = branch
+    g = log --oneline --graph
+    s = status
+    d = diff
+    ps = push
+    pl = pull
+
+[core]
+    editor = vim
