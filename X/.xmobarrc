@@ -7,7 +7,7 @@ Config { font = "xft:Tewi:size=7"
        , lowerOnStart = True
        , iconRoot = "~/.icons/sm4tik"
        , commands = [ Run Cpu ["-t", "<total>%"] 10
-                    , Run Memory ["-t","<usedratio>%"] 10
+                    , Run Memory ["-t","<used> M"] 10
                     , Run Date "%d.%m - %H:%M" "date" 10
                     , Run StdinReader
                     , Run Kbd [("de(neo)", "neo")]

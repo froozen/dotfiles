@@ -2,6 +2,7 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe)
+import XMonad.Util.EZConfig (additionalKeys)
 import System.IO
 
 styleColor = "#6074c8"
@@ -18,8 +19,11 @@ customPP handle = xmobarPP {
 main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ defaultConfig {
-      manageHook = manageDocks <+> manageHook defaultConfig
-    , layoutHook = avoidStruts  $  layoutHook defaultConfig
-    , terminal   = "urxvt"
-    , logHook    = dynamicLogWithPP . customPP $ xmproc
-    }
+          manageHook = manageDocks <+> manageHook defaultConfig
+        , layoutHook = avoidStruts  $  layoutHook defaultConfig
+        , terminal   = "urxvt"
+        , logHook    = dynamicLogWithPP . customPP $ xmproc
+        , normalBorderColor = "#000000"
+        , focusedBorderColor = styleColor
+        } `additionalKeys`
+        [ ((mod4Mask, xK_l), spawn "alock") ]
