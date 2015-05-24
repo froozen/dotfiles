@@ -32,6 +32,8 @@ call vundle#end()
 
 map , <Nop>
 let mapleader = ","
+" Fix Backspace
+set backspace=2
 
 " General
 nnoremap <silent> <Leader>w :w<CR>
