@@ -54,3 +54,6 @@ URxvt*perl-ext-common: default,clipboard,matcher
 URxvt*perl-ext: default,clipboard,matcher
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
+
+ALock.Background.Shade.Shade: 30
+ALock.Background.Shade.Blur: 20
