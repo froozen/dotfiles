@@ -13,17 +13,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Sirver/ultisnips'
 Plugin 'bling/vim-airline'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
 Plugin 'scrooloose/syntastic'
 
 " Go plugins
 Plugin 'fatih/vim-go'
-
-" C / C++ plugins
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'FSwitch'
-Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " Haskell plugins
 Plugin 'bitc/vim-hdevtools'
