@@ -10,7 +10,9 @@ Config { font = "xft:Tewi:size=7"
                     , Run Memory ["-t","<used> M"] 10
                     , Run Date "%d.%m - %H:%M" "date" 10
                     , Run StdinReader
-                    , Run Kbd [("de(neo)", "neo")]
+                    , Run Kbd [ ("de(neo)", "neo")
+                              , ("de", "<fc=#ff0000>de</fc>")
+                              ]
                     , Run MPD ["-t", "<artist> - <title> [<album>] <lapsed>/<length>"
                               ] 10
                     , Run Volume "default" "Master"

@@ -29,4 +29,5 @@ main = do
         } `additionalKeys`
         [ ((mod4Mask, xK_l), spawn "alock")
         , ((mod1Mask, xK_r), spawn "dmenu_run")
+        , ((mod4Mask, xK_k), spawn "~/.bin/toggle-layout.sh")
         ]
