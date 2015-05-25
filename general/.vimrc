@@ -112,4 +112,7 @@ if has ( 'gui_running' )
 
     " Reenable traditional dialouges
     set go+=c
+
+    " Fix gvim + xmonad
+    set guiheadroom=0
 endif
