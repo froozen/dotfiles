@@ -25,5 +25,8 @@ main = do
         , logHook    = dynamicLogWithPP . customPP $ xmproc
         , normalBorderColor = "#000000"
         , focusedBorderColor = styleColor
+        , workspaces = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
         } `additionalKeys`
-        [ ((mod4Mask, xK_l), spawn "alock") ]
+        [ ((mod4Mask, xK_l), spawn "alock")
+        , ((mod1Mask, xK_r), spawn "dmenu_run")
+        ]
