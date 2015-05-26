@@ -14,12 +14,14 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Sirver/ultisnips'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
+Plugin 'Shougo/neocomplete.vim'
 
 " Go plugins
 Plugin 'fatih/vim-go'
 
 " Haskell plugins
 Plugin 'bitc/vim-hdevtools'
+Plugin 'eagletmt/neco-ghc'
 
 call vundle#end()
 
@@ -41,13 +43,11 @@ nnoremap <silent> <Leader>fL :FSSplitRight<CR>
 nnoremap <silent> <Leader>fH :FSSplitLeft<CR>
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsEditSplit="vertical"
 
-" YouCompleteMe
-let g:ycm_autoclose_preview_window_after_insertion=1
-let g:ycm_complete_in_comments=1
+" neoomplete
+let g:neocomplete#enable_at_startup=1
+let g:neocomplete#enable_fuzzy_completion=1
 
 " vim-go
 " TODO Change to compter specific path
@@ -97,6 +97,9 @@ colorscheme molokai
 
 " Use tabs for makefile indenting
 autocmd FileType make setlocal noexpandtab shiftwidth=8 softtabstop=0
+
+" Use necoghc's omnifunc
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Accept .md files as markdown
 autocmd BufEnter *.md setlocal ft=markdown
