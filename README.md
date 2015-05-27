@@ -11,4 +11,7 @@ I've split my dotfiles into the following categories:
 - `res`: Technically no dotfiles at all. These are binary files needed for the
   `X` configuration, such as icons or fonts
 
+---------
+![A screenshot of my current setup](http://i.imgur.com/5wbRBoK.jpg)
+
 [gnu_stow]: http://www.gnu.org/software/stow/
