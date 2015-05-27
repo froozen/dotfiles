@@ -13,8 +13,10 @@ Config { font = "xft:Tewi:size=7"
                     , Run Kbd [ ("de(neo)", "neo")
                               , ("de", "<fc=#ff0000>de</fc>")
                               ]
-                    , Run MPD ["-t", "<artist> - <title> [<album>] <lapsed>/<length>"
-                              ] 10
+                    -- Unfortunately, the only thing that seems to work
+                    -- properly is executing .sh files, so I'll make do
+                    -- with this gross solution for now.
+                    , Run Com ".bin/mpc-query.sh" [] "mpd_custom" 10
                     , Run Volume "default" "Master"
                               ["-t", "<volume>%"
                               ] 10
@@ -27,7 +29,7 @@ Config { font = "xft:Tewi:size=7"
        , sepChar = "%"
        , alignSep = "}{"
        , template = "%StdinReader% \
-                    \%mpd% \
+                    \%mpd_custom% \
                     \}{ \
                     \%dynnetwork% \
                     \<icon=cpu.xbm/> %cpu% \
