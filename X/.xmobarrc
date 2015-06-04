@@ -1,7 +1,7 @@
 -- vim: ft=haskell
 
 Config { font = "xft:Tewi:size=7"
-       , bgColor = "black"
+       , bgColor = "#141414"
        , fgColor = "#6074c8"
        , position = Top
        , lowerOnStart = True
