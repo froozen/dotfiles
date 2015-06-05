@@ -1,6 +1,6 @@
-import subprocess
+import utils
 
-host = ""
+host = "archpc"
 format = "[%artist% - %title% \\[%album%\\]]|%file%"
 symbols = {
         "[playing]": "play",
@@ -8,16 +8,6 @@ symbols = {
         }
 error_message = "<fc=#ff0000><icon=phones.xbm/> Can't connect to mpd</fc>"
 stopped_message = "<icon=phones.xbm/> Nothing playing at the moment"
-
-def call_command(command):
-    p = subprocess.Popen(command, stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE)
-
-    out, err = p.communicate()
-    if p.returncode == 0:
-        return [out.decode().strip(), True]
-    else:
-        return [err.decode().strip(), False]
 
 def symbol(out):
     state = out.splitlines()[1].split(" ")[0]
@@ -40,7 +30,7 @@ def position(out):
     return ""
 
 if __name__ == "__main__":
-    out, success = call_command(["mpc", "-h", host, "-f", format])
+    out, success = utils.call_command(["mpc", "-h", host, "-f", format])
     if not success:
         print(error_message)
     elif len(out.splitlines()) == 1:

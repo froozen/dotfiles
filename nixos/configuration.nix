@@ -28,6 +28,7 @@
     mpc_cli
     scrot
     libnotify
+    acpi
 
     # Unfortunately, dust wont find my config file unless I do this
     (lib.overrideDerivation dunst (attrs: {
