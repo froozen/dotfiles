@@ -4,15 +4,12 @@
   imports =
     [
       ./hardware-configuration.nix
+      # ./machines/machine.nix
     ];
 
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
-
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.hostId = "50754a4a";
-  # networking.wireless.enable = true;  # Enables wireless.
 
   i18n = { consoleKeyMap = "de"; };
 
@@ -53,7 +50,6 @@
     haskellPackages.cabal2nix
   ];
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "de";
   services.xserver.xkbVariant = "neo";
@@ -61,15 +57,19 @@
   services.xserver.windowManager.default = "xmonad";
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
+  services.xserver.desktopManager.xterm.enable = false;
 
   services.xserver.displayManager.sessionCommands = ''
     feh --bg-fill ~/.wallpaper &
   '';
 
+  users.extraGroups.brotknust = {};
   users.extraUsers.brotknust = {
     isNormalUser = true;
     createHome = true;
     home = "/home/brotknust";
+    group = "brotknust";
+    extraGroups = [ "wheel" ];
   };
 
 }
