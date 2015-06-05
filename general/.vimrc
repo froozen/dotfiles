@@ -90,6 +90,10 @@ set listchars=tab:>-,trail:.
 set list
 set wildmenu
 set cursorline
+set showcmd
+
+" Mark lines longer than 80 characters
+match Error /\%81v.\+/
 
 filetype indent on
 
