@@ -13,6 +13,6 @@ I've split my dotfiles into the following categories:
 - `slim-themes`: Themes for the SLiM login manager. They go into `/usr/share/slim/themes`.
 
 ---------
-![A screenshot of my current setup](http://i.imgur.com/5wbRBoK.jpg)
+![A screenshot of my current setup](http://i.imgur.com/MWmb2CI.png)
 
 [gnu_stow]: http://www.gnu.org/software/stow/
