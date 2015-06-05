@@ -25,12 +25,14 @@ Config { font = "xft:Tewi:size=7"
                               , "<icon=net_down_02.xbm/> <rx> KB/s \
                                 \<icon=net_up_02.xbm/> <tx> KB/s"
                               ] 10
+                    , Run Com ".bin/touchpad-controll.sh" ["query"] "touchpad" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
        , template = "%StdinReader% \
                     \%mpd_custom% \
                     \}{ \
+                    \%touchpad% \
                     \%dynnetwork% \
                     \<icon=cpu.xbm/> %cpu% \
                     \<icon=mem.xbm/> %memory% \

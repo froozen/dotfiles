@@ -30,4 +30,5 @@ main = do
         [ ((mod4Mask, xK_l), spawn "alock -bg shade")
         , ((mod1Mask, xK_r), spawn "dmenu_run")
         , ((mod4Mask, xK_k), spawn "~/.bin/toggle-layout.sh")
+        , ((mod4Mask, xK_f), spawn "~/.bin/touchpad-controll.sh toggle")
         ]
