@@ -1,0 +1,8 @@
+.gitignore
+*.swp
+*.pyc
+*.hi
+*.o
+*.errors
+*-x86_64-linux
+general/.vim/bundle
