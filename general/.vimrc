@@ -16,8 +16,9 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
 
-" Go plugins
+" Language specific
 Plugin 'fatih/vim-go'
+Plugin 'lambdatoast/elm.vim'
 
 " Haskell plugins
 Plugin 'bitc/vim-hdevtools'
