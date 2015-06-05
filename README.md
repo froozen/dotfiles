@@ -8,6 +8,7 @@ I've split my dotfiles into the following categories:
 - `general`: Files that I'll need on a server as well as on a machine running
   a Xorg server
 - `X`: Files used to configure graphical things, such as a WM
+- `nixos`: My [NixOS][nixos] configuration
 - `res`: Technically no dotfiles at all. These are binary files needed for the
   `X` configuration, such as icons or fonts
 - `slim-themes`: Themes for the SLiM login manager. They go into `/usr/share/slim/themes`.
@@ -16,3 +17,4 @@ I've split my dotfiles into the following categories:
 ![A screenshot of my current setup](http://i.imgur.com/MWmb2CI.png)
 
 [gnu_stow]: http://www.gnu.org/software/stow/
+[nixos]: http://nixos.org/
