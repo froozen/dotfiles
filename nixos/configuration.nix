@@ -34,7 +34,7 @@
     (lib.overrideDerivation dunst (attrs: {
       name = "${attrs.name}-force-config";
       postInstall = ''
-        sed -i "s/\\/dunst/\\/dunst -config \\/root\\/.config\\/dunst\\/dunstrc/" $out/share/dbus-1/services/org.knopwob.dunst.service
+        sed -i "s/\\/dunst/\\/dunst -config \\/home\\/brotknust\\/.config\\/dunst\\/dunstrc/" $out/share/dbus-1/services/org.knopwob.dunst.service
       '';
     }))
 
