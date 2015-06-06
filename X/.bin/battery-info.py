@@ -7,7 +7,7 @@ discharging_message = "<fc=#ff0000><icon=bat_low_01.xbm/> %s - %s</fc> "
 def get_acpi_out():
     acpi_out, success = utils.call_command(["acpi"])
 
-    if not success:
+    if not success or acpi_out == "":
         return None, None, success
 
     acpi_split = acpi_out.split(": ")[1].split(", ")
