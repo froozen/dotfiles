@@ -32,7 +32,7 @@ main = do
 
         -- Toggle control scheme
         , ((mod4Mask, xK_k), spawn "~/.bin/toggle-layout.sh")
-        , ((mod4Mask, xK_f), spawn "~/.bin/touchpad-controll.sh toggle")
+        , ((mod4Mask, xK_f), spawn "~/.bin/touchpad-control.sh toggle")
 
         -- MPD keybinds
         , ((mod4Mask, xK_comma), spawn "~/.bin/mpc-query.sh toggle")
