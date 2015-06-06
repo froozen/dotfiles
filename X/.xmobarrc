@@ -16,7 +16,7 @@ Config { font = "xft:Tewi:size=7"
                     -- Unfortunately, the only thing that seems to work
                     -- properly is executing .sh files, so I'll make do
                     -- with this gross solution for now.
-                    , Run Com ".bin/mpc-query.sh" [] "mpd_custom" 10
+                    , Run Com ".bin/mpc-query.sh" ["query"] "mpd_custom" 10
                     , Run Volume "default" "Master"
                               ["-t", "<volume>%"
                               ] 10

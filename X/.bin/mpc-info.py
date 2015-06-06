@@ -1,6 +1,7 @@
 import utils
+import sys
 
-host = "archpc"
+host = sys.argv[1]
 format = "[%artist% - %title% \\[%album%\\]]|%file%"
 symbols = {
         "[playing]": "play",
