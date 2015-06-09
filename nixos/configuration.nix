@@ -49,6 +49,7 @@
     haskellPackages.hdevtools
     haskellPackages.ghcMod
     haskellPackages.cabal2nix
+    haskellPackages.hlint
   ];
 
   services.xserver.enable = true;
