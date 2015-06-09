@@ -6,6 +6,15 @@ def call_command(command):
 
     out, err = p.communicate()
     if p.returncode == 0:
-        return [out.decode().strip(), True]
+        return [out.decode("utf8").strip(), True]
     else:
-        return [err.decode().strip(), False]
+        return [err.decode("utf8").strip(), False]
+
+def to_ascii(s):
+    converted = ""
+    for c in s:
+        if ord(c) > 128:
+            converted += "?"
+        else:
+            converted += c
+    return converted

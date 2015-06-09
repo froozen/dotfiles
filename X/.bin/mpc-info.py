@@ -32,6 +32,7 @@ def position(out):
 
 if __name__ == "__main__":
     out, success = utils.call_command(["mpc", "-h", host, "-f", format])
+    out = utils.to_ascii(out)
     if not success:
         print(error_message)
     elif len(out.splitlines()) == 1:
