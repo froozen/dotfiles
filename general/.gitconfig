@@ -10,15 +10,20 @@
     graph = log --oneline --graph
     commit-count = rev-list HEAD --count
 
-    c = commit
-    a = add
-    r = remove
-    b = branch
-    g = log --oneline --graph
-    s = status
-    d = diff
+    c  = commit
+    ca = commit --amend
+    a  = add
+    r  = remove
+    b  = branch
+    g  = log --oneline --graph
+    s  = status
+    d  = diff
     ps = push
     pl = pull
+    st = stash
+    sa = stash apply
+    ri = rebase -i
+    rc = rebase --continue
 
 [core]
     editor = vim
