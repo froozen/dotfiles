@@ -41,6 +41,9 @@
     # Misc programs with a GUI
     firefoxWrapper
 
+    # ncurses programs
+    weechat
+
     # Terminal emulator
     rxvt_unicode
     urxvt_perls
