@@ -6,3 +6,4 @@
 *.errors
 *-x86_64-linux
 general/.vim/bundle
+general/.weechat/log
