@@ -20,6 +20,7 @@
     python2
     python3
     stow
+    mpd
 
     # WM and stuff used in its config
     dmenu
