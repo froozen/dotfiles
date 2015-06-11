@@ -41,6 +41,7 @@
 
     # Misc programs with a GUI
     firefoxWrapper
+    thunderbird
 
     # ncurses programs
     weechat
