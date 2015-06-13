@@ -1,0 +1,43 @@
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+allow_bold = false
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+scrollback_lines = 100000
+search_wrap = true
+cursor_blink = on
+cursor_shape = underline
+font = Tewi 7
+
+browser = firefox
+
+[colors]
+cursor = #ffffff
+foreground = #eeeeee
+foreground_bold = #eeeeee
+background = #141414
+
+color0  = #000000
+color1  = #ba3535
+color2  = #479f76
+color3  = #839f73
+color4  = #4a708b
+color5  = #8660af
+color6  = #479cb2
+color7  = #c3c3c3
+color8  = #535353
+color9  = #9b9aa2
+color10 = #78b1a5
+color11 = #97b1a4
+color12 = #7a91c4
+color13 = #9891c2
+color14 = #78b0c4
+color15 = #ffffff
+
+[hints]
+padding = 2
+
+# vim: ft=dosini cms=#%s

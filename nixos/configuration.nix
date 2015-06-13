@@ -47,8 +47,7 @@
     weechat
 
     # Terminal emulator
-    rxvt_unicode
-    urxvt_perls
+    termite
 
     # Packages needed for haskell + vim fanciness
     haskellPackages.hdevtools

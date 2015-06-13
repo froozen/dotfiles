@@ -21,7 +21,7 @@ main = do
     xmonad $ defaultConfig {
           manageHook = manageDocks <+> manageHook defaultConfig
         , layoutHook = avoidStruts  $  layoutHook defaultConfig
-        , terminal   = "urxvt"
+        , terminal   = "termite"
         , logHook    = dynamicLogWithPP . customPP $ xmproc
         , normalBorderColor = "#000000"
         , focusedBorderColor = styleColor
