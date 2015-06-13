@@ -15,6 +15,7 @@ Plugin 'Sirver/ultisnips'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'kien/ctrlp.vim'
 
 " Language specific
 Plugin 'fatih/vim-go'
