@@ -6,6 +6,9 @@
     email = fro_ozen@gmx.de
     name = fro_ozen
 
+[push]
+    default = current
+
 [alias]
     graph = log --oneline --graph
     commit-count = rev-list HEAD --count
@@ -20,6 +23,8 @@
     d  = diff
     ps = push
     pl = pull
+    pso = push origin
+    plo = pull origin
     st = stash
     sa = stash apply
     ri = rebase -i
