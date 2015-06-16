@@ -28,7 +28,7 @@ main = do
         , workspaces = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
         } `additionalKeys`
         [ ((mod4Mask, xK_l), spawn "alock -bg shade")
-        , ((mod1Mask, xK_r), spawn "dmenu_run")
+        , ((mod1Mask, xK_r), spawn "rofi -show run")
 
         -- Toggle control scheme
         , ((mod4Mask, xK_k), spawn "~/.bin/toggle-layout.sh")

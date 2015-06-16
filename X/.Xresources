@@ -4,3 +4,11 @@
 
 ALock.Background.Shade.Shade: 30
 ALock.Background.Shade.Blur: 20
+
+rofi.font:      tewi 9
+rofi.bg:        #141414
+rofi.fg:        #eeeeee
+rofi.bc:        #6074c8
+rofi.hlbg:      #6074c8
+rofi.lines:     25
+rofi.terminal:  termite
