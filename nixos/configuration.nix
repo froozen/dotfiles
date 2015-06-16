@@ -54,7 +54,10 @@
     haskellPackages.ghcMod
     haskellPackages.cabal2nix
     haskellPackages.hlint
-  ];
+
+    # Custom avant-garde packages
+    (import custom-pkgs/rofi.nix pkgs)
+    ];
 
   services.xserver.enable = true;
   services.xserver.layout = "de";
