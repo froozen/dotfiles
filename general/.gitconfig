@@ -13,13 +13,15 @@
     graph = log --oneline --graph
     commit-count = rev-list HEAD --count
 
-    c  = commit
+    c  = commit -v
     ca = commit --amend
     a  = add
     r  = remove
     b  = branch
-    g  = log --oneline --graph
-    s  = status
+    co = checkout
+    nb = checkout -b
+    g  = log --oneline --graph --all
+    s  = status -bs
     d  = diff
     ps = push
     pl = pull
