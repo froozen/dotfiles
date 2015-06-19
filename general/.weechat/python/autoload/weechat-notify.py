@@ -7,6 +7,7 @@ weechat.register("weechat-notify", "fro_ozen", "1.0", "None", "libnotify notific
 options = {
         "blacklist": ("", "comma-separated list of channels to be ignored"),
         "enable_sound": ("off", "enable playing sound via sox"),
+        "whitelist_nick": ("on", "ignore blacklist if your nickname is mentioned in a message"),
         }
 
 for option, default_value in options.items():
@@ -16,14 +17,12 @@ for option, default_value in options.items():
 
 enable_sound = None
 blacklist = None
+whitelist_nick = None
 
 def on_privmsg(data, signal, signal_data):
-    msg_info = weechat.info_get_hashtable("irc_message_parse", { "message": signal_data})
+    qualifies, msg_info, content = check_signal(signal, signal_data)
 
-    if not msg_info["channel"] in blacklist:
-        content = msg_info["arguments"].split(":");
-        content = ":".join(content[1:len(content)])
-
+    if qualifies:
         subprocess.call(["notify-send", "%s on %s" % (msg_info["nick"], msg_info["channel"]), content])
 
         if enable_sound:
@@ -34,11 +33,24 @@ def on_privmsg(data, signal, signal_data):
 
     return weechat.WEECHAT_RC_OK
 
+def check_signal(signal, signal_data):
+    msg_info = weechat.info_get_hashtable("irc_message_parse", { "message": signal_data})
+
+    content = msg_info["arguments"].split(":");
+    content = ":".join(content[1:len(content)])
+
+    nick = weechat.info_get("irc_nick", signal.split(",")[0])
+
+    qualifies = (msg_info["channel"] not in blacklist) or whitelist_nick and (nick in content)
+
+    return (qualifies, msg_info, content)
+
 def load_config():
-    global blacklist, enable_sound
+    global blacklist, enable_sound, whitelist_nick
 
     blacklist = weechat.config_get_plugin("blacklist").split(",")
     enable_sound = weechat.config_string_to_boolean(weechat.config_get_plugin("enable_sound"))
+    whitelist_nick = weechat.config_string_to_boolean(weechat.config_get_plugin("whitelist_nick"))
 
 def on_config(data, option, value):
     load_config()
