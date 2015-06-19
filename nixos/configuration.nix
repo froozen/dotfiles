@@ -75,6 +75,10 @@
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.desktopManager.xterm.enable = false;
 
+  services.redshift.enable = true;
+  services.redshift.latitude = "48.1374300";
+  services.redshift.longitude = "11.5754900";
+
   services.xserver.displayManager.sessionCommands = ''
     feh --bg-fill ~/.wallpaper &
   '';
