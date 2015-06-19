@@ -11,6 +11,11 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
+  nix.trustedBinaryCaches = [
+    "http://hydra.nixos.org"
+    "http://hydra.cryp.to"
+  ];
+
   i18n = { consoleKeyMap = "de"; };
 
   environment.systemPackages = with pkgs; [
