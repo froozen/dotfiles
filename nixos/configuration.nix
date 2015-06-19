@@ -51,13 +51,15 @@
 
     # Packages needed for haskell + vim fanciness
     haskellPackages.hdevtools
-    haskellPackages.ghcMod
+    # haskellPackages.ghc-mod
     haskellPackages.cabal2nix
     haskellPackages.hlint
 
     # Custom avant-garde packages
     (import custom-pkgs/rofi.nix pkgs)
     ];
+
+  time.timeZone = "Europe/Berlin";
 
   services.xserver.enable = true;
   services.xserver.layout = "de";
