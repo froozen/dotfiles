@@ -14,8 +14,8 @@ for option, default_value in options.items():
         weechat.config_set_plugin(option, default_value[0])
         weechat.config_set_desc_plugin(option, default_value[1])
 
-enable_sound = weechat.config_string_to_boolean(weechat.config_get_plugin("enable_sound"))
-blacklist = weechat.config_string(weechat.config_get_plugin("blacklist")).split(",")
+enable_sound = None
+blacklist = None
 
 def on_privmsg(data, signal, signal_data):
     msg_info = weechat.info_get_hashtable("irc_message_parse", { "message": signal_data})
@@ -34,17 +34,18 @@ def on_privmsg(data, signal, signal_data):
 
     return weechat.WEECHAT_RC_OK
 
-def on_config(data, option, value):
+def load_config():
     global blacklist, enable_sound
 
-    option = option[len("plugins.var.python.weechat-notify."):]
+    blacklist = weechat.config_get_plugin("blacklist").split(",")
+    enable_sound = weechat.config_string_to_boolean(weechat.config_get_plugin("enable_sound"))
 
-    if option == "blacklist":
-        blacklist = weechat.config_get_plugin("blacklist").split(",")
-    elif option == "enable_sound":
-        enable_sound = weechat.config_string_to_boolean(weechat.config_get_plugin("enable_sound"))
+def on_config(data, option, value):
+    load_config()
 
     return weechat.WEECHAT_RC_OK
+
+load_config()
 
 weechat.hook_signal("*,irc_in2_privmsg", "on_privmsg", "")
 weechat.hook_config("plugins.var.python.weechat-notify.*", "on_config", "")
