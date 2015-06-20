@@ -1,6 +1,6 @@
 #!/bin/sh
 
-touchpadId=12
+touchpadId=14
 touchpadProps=`xinput list-props $touchpadId`
 pattern="Device Enabled \\(140\\): *1"
 if [[ $touchpadProps == *"Synaptics TouchPad"* ]]
