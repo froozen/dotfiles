@@ -56,7 +56,7 @@
 
     # Packages needed for haskell + vim fanciness
     haskellPackages.hdevtools
-    # haskellPackages.ghc-mod
+    haskellPackages.ghcMod
     haskellPackages.cabal2nix
     haskellPackages.hlint
 
