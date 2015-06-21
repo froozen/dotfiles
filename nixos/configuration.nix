@@ -26,6 +26,7 @@
     python3
     stow
     mpd
+    tmux
 
     # WM and stuff used in its config
     dmenu
