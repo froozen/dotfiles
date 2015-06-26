@@ -83,7 +83,7 @@
 
   services.xserver.displayManager.sessionCommands = ''
     feh --bg-fill ~/.wallpaper &
-    redshift -l 48.1374 11.5754 &
+    redshift -l 48.1374:11.5754 &
     '';
 
   users.extraGroups.brotknust = {};
