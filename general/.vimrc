@@ -75,7 +75,7 @@ nnoremap <silent> <Leader>hi :HdevtoolsInfo<CR>
 nnoremap <silent> <Leader>e :Errors<CR>
 
 " ctrlp
-let g:ctrlp_custom_ignore = '.*\.(o|hi)'
+let g:ctrlp_custom_ignore = '\v\.(o|swp|hi|dyn_o|dyn_hi)'
 
 " Airline
 let g:bufferline_echo = 0
