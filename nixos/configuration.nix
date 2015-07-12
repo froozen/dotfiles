@@ -49,12 +49,12 @@
     # Misc programs with a GUI
     firefoxWrapper
     thunderbird
+    mpv
+    termite
 
     # ncurses programs
     weechat
 
-    # Terminal emulator
-    termite
 
     # Packages needed for haskell + vim fanciness
     haskellPackages.hdevtools
