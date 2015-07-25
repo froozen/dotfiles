@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       # ./machines/machine.nix
+      ./neo.nix
     ];
 
   boot.loader.grub.enable = true;
@@ -15,8 +16,6 @@
     "http://hydra.nixos.org"
     "http://hydra.cryp.to"
   ];
-
-  i18n = { consoleKeyMap = "de"; };
 
   environment.systemPackages = with pkgs; [
     # Generally useful packcges
@@ -69,9 +68,6 @@
   time.timeZone = "Europe/Berlin";
 
   services.xserver.enable = true;
-  services.xserver.layout = "de";
-  services.xserver.xkbVariant = "neo";
-
   services.xserver.windowManager.default = "xmonad";
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
