@@ -26,9 +26,14 @@
     stow
     mpd
     tmux
+
+    # Stuff for e-mail
     mutt
     isync
     msmtp
+    gnupg
+    gpgme
+    pass
 
     # WM and stuff used in its config
     dmenu
