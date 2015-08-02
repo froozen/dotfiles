@@ -61,7 +61,6 @@
 
     # Packages needed for haskell + vim fanciness
     haskellPackages.hdevtools
-    haskellPackages.ghcMod
     haskellPackages.cabal2nix
     haskellPackages.hlint
 
@@ -80,9 +79,12 @@
   services.tor.enable = true;
   services.tor.client.enable = true;
 
+  services.redshift.enable = true;
+  services.redshift.latitude = "48.1374";
+  services.redshift.longitude = "11.5754";
+
   services.xserver.displayManager.sessionCommands = ''
     feh --bg-fill ~/.wallpaper &
-    redshift -l 48.1374:11.5754 &
     '';
 
   users.extraGroups.brotknust = {};
