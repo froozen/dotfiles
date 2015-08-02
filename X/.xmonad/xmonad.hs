@@ -31,11 +31,11 @@ main = do
         , ((mod1Mask, xK_r), spawn "rofi -show run")
 
         -- Toggle control scheme
-        , ((mod4Mask, xK_k), spawn "~/.bin/toggle-layout.sh")
-        , ((mod4Mask, xK_f), spawn "~/.bin/touchpad-control.sh toggle")
+        , ((mod4Mask, xK_k), spawn "~/.bin/toggle-layout")
+        , ((mod4Mask, xK_f), spawn "~/.bin/touchpad-control toggle")
 
         -- MPD keybinds
-        , ((mod4Mask, xK_comma), spawn "~/.bin/mpc-query.sh toggle")
-        , ((mod4Mask, xK_m), spawn "~/.bin/mpc-query.sh prev")
-        , ((mod4Mask, xK_period), spawn "~/.bin/mpc-query.sh next")
+        , ((mod4Mask, xK_comma), spawn "~/.bin/mpc-query toggle")
+        , ((mod4Mask, xK_m), spawn "~/.bin/mpc-query prev")
+        , ((mod4Mask, xK_period), spawn "~/.bin/mpc-query next")
         ]

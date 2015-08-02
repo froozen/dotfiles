@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 export EDITOR="vim"
+export PATH="$PATH:~/.bin"
 
 export PS1_RED="\033[00;31m"
 export PS1_BLUE="\033[1;34m"

@@ -1,6 +1,6 @@
 #/bin/sh
 
-host=""
+host="archpc"
 
 if [[ $1 == "query" ]]
 then
