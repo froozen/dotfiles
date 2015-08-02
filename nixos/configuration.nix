@@ -26,6 +26,9 @@
     stow
     mpd
     tmux
+    mutt
+    isync
+    msmtp
 
     # WM and stuff used in its config
     dmenu
