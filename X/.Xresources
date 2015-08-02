@@ -2,8 +2,10 @@
 ! ~/.Xressources
 !
 
+ALock.Background.Shade.Mono: true
 ALock.Background.Shade.Shade: 30
 ALock.Background.Shade.Blur: 20
+ALock.Input.Frame.Width: 1
 
 rofi.font:      tewi 9
 rofi.bg:        #141414
