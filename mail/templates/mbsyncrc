@@ -1,0 +1,22 @@
+IMAPAccount %%alias%%
+Host %%imap%%
+User %%user%%@%%host%%
+PassCmd "pass email/%%alias%%"
+#
+# Use SSL
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore %%alias%%-remote
+Account %%alias%%
+
+MaildirStore %%alias%%-local
+Path ~/.mail/%%alias%%/
+Inbox ~/.mail/%%alias%%/INBOX
+
+Channel %%alias%%
+Master :%%alias%%-remote:
+Slave :%%alias%%-local:
+Patterns INBOX
+Create Both
+SyncState *

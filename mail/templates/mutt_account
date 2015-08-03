@@ -1,0 +1,4 @@
+set from = "%%user%%@%%host%%"
+set sendmail = "msmtp -a %%alias%%"
+set mbox = "+%%alias%%/archive"
+set postponed = "+%%alias%%/drafts"
