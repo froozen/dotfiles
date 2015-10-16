@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+cabal build 2>&1 | less
