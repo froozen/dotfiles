@@ -83,6 +83,7 @@
 
   services.tor.enable = true;
   services.tor.client.enable = true;
+  services.tor.controlPort = 9051;
 
   services.redshift.enable = true;
   services.redshift.latitude = "48.1374";
