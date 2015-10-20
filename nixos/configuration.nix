@@ -17,6 +17,18 @@
     "http://hydra.cryp.to"
   ];
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    # Update tor to 0.2.7.3-rc
+    tor = pkgs.stdenv.lib.overrideDerivation pkgs.tor (attrs: {
+      name = "tor-0.2.7.3-rc";
+
+      src = pkgs.fetchurl {
+        url = "https://www.torproject.org/dist/tor-0.2.7.3-rc.tar.gz";
+        sha256 = "1f3hfhar0dq1w3zrf0bkss5w5hac2ngy3da50mdfzvbm8jw4mf5f";
+      };
+    });
+  };
+
   environment.systemPackages = with pkgs; [
     # Generally useful packcges
     git
@@ -84,6 +96,9 @@
   services.tor.enable = true;
   services.tor.client.enable = true;
   services.tor.controlPort = 9051;
+  services.tor.extraConfig = ''
+    CookieAuth 1
+  '';
 
   services.redshift.enable = true;
   services.redshift.latitude = "48.1374";
