@@ -22,9 +22,7 @@ function replace () {
 
 replace "licenses." "unfree" "$license"
 replace "f = { " "" "cabal-install, "
-replace "buildDepends = " "\[ " "%% cabal-install "
-replace "buildDepends = \[" "" " cabal-install"
-replace "" "%%" "\["
+replace "src = ./.;" "" "buildDepends = [ cabal-install ];"
 
 if [[ $2 ]]; then
     cp $filename $2
