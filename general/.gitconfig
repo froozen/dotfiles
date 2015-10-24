@@ -20,7 +20,7 @@
     b  = branch
     co = checkout
     nb = checkout -b
-    g  = log --oneline --graph --all
+    g  = log --oneline --graph
     s  = status -bs
     d  = diff
     ps = push
