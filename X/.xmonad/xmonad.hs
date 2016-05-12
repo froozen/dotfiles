@@ -16,19 +16,26 @@ customPP handle = xmobarPP {
            , ppWsSep   = ""
            }
 
+customLayoutHook = avoidStruts tiled
+    where tiled   = Tall nmaster delta ratio
+          nmaster = 1
+          ratio   = 1/2
+          delta   = 1/100
+
 main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ defaultConfig {
           manageHook = manageDocks <+> manageHook defaultConfig
-        , layoutHook = avoidStruts  $  layoutHook defaultConfig
+        , layoutHook = customLayoutHook
         , terminal   = "termite"
         , logHook    = dynamicLogWithPP . customPP $ xmproc
         , normalBorderColor = "#000000"
         , focusedBorderColor = styleColor
-        , workspaces = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
+        , modMask = mod4Mask
+        , workspaces = map (:[]) ['a'..'i']
         } `additionalKeys`
         [ ((mod4Mask, xK_l), spawn "alock -bg shade")
-        , ((mod1Mask, xK_r), spawn "rofi -show run")
+        , ((mod4Mask, xK_r), spawn "rofi -show run")
 
         -- Toggle control scheme
         , ((mod4Mask, xK_k), spawn "~/.bin/toggle-layout")
