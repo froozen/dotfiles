@@ -34,7 +34,7 @@ main = do
         , modMask = mod4Mask
         , workspaces = map (:[]) ['a'..'i']
         } `additionalKeys`
-        [ ((mod4Mask, xK_l), spawn "alock -bg shade")
+        [ ((mod4Mask, xK_l), spawn "slock")
         , ((mod4Mask, xK_r), spawn "rofi -show run")
 
         -- Toggle control scheme
