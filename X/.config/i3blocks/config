@@ -1,0 +1,37 @@
+separator_block_width=14
+color=#6074c8
+interval=5
+
+[cpu]
+label=CPU 
+command=echo "$(top -bn1 -p1 | grep "Cpu(s)" | awk '{print $2 + $4}')%"
+
+[mem]
+label=MEM 
+# command=echo "$(top -bn1 -p1 | grep "GiB Mem" | grep -o -P '\d+.\d' | head -n 1)% MB"
+command=echo "$(top -bn1 -p1 | grep "MiB Mem" | awk '{print $8}' | grep -o -P "\d*" | head -n 1) MB"
+
+# [swap]
+# # Display only when used
+# # command=echo "$(top -bn1 -p1 | grep "GiB Swap" | grep -o -P '\d+.\d' | head -n 1)%" | grep -vE "^0.0%$"
+# command=echo "$(top -bn1 -p1 | grep "MiB Swap" | awk '{print $8}' | grep -o -P "\d*" | head -n 1)%" | grep -vE "^0%$"
+# color=#FF0000
+
+[disk]
+label=HDD 
+command=df -h | grep acer--lvm-root | grep -o -P "\d*(.\d)?G" | tail -n 1
+interval=30
+
+[battery]
+command=/home/user/.bin/battery-query.sh
+
+[wifi]
+label=WIFI 
+command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r)"
+
+# [touchpad]
+# command=/home/user/.bin/touchpad-control query
+
+[time]
+command=date "+%d.%m %T"
+interval=1

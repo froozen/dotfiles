@@ -7,7 +7,7 @@ ALock.Background.Shade.Shade: 30
 ALock.Background.Shade.Blur: 20
 ALock.Input.Frame.Width: 1
 
-rofi.font:      tewi 9
+rofi.font:      Droid Sans Mono 11
 rofi.lines:     25
 rofi.terminal:  termite
 
@@ -15,3 +15,5 @@ rofi.terminal:  termite
 rofi.color-normal: #141414, #eeeeee, #141414, #6074c8, #eeeeee
 !                  background border
 rofi.color-window: #141414,   #6074c8
+
+Xcursor.size: 10

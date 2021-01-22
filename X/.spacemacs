@@ -17,7 +17,10 @@ values."
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(
+   '(markdown
+     html
+     python
+     ;; sml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -26,31 +29,40 @@ values."
      auto-completion
      ;; better-defaults
      ;; emacs-lisp
-     (haskell :variables
-              haskell-enable-ghc-mode-support t)
-     ;; git
+     ;; (haskell :variables
+     ;;          haskell-enable-ghc-mode-support t
+     ;;          haskell-completion-backend 'ghc-mod)
+     haskell
+     coq
+
+     (latex :variable
+            latex-build-command "LaTeX")
+
+     git
      ;; markdown
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     org
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
      spell-checking
      (syntax-checking :variables
                       syntax-checking-enable-tooltips nil)
      ;; version-control
-     scheme
-     python
-     go
-     (c-c++ :variables
-            c-c++-default-mode-for-headers 'c++-mode
-            c-c++-enable-clang-support t)
+     ;; scheme
+     ;; python
+     ;; go
+     ;; semantic
+     ;; java
+     ;; (c-c++ :variables
+     ;;        c-c++-enable-clang-support t)
      themes-megapack
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+     '(srcery-theme)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -88,14 +100,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(apropospriate-dark
-                         molokai
-                         spacemacs-dark
-                         spacemacs-light
-                         solarized-light
-                         solarized-dark
-                         leuven
-                         zenburn)
+   dotspacemacs-themes '(monokai)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -205,6 +210,13 @@ It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
   (setq flycheck-display-errors-function 'flycheck-display-error-messages-unless-error-list)
+  (setq evil-want-abbrev-expand-on-insert-exit nil)
+  ;; (setq coq-prog-args '("-R" "/home/user/src/coq/cpdt/cpdt/src" "Cpdt"))
+  (custom-set-variables
+   '(coq-prog-name (concat (getenv "HOME") "/.opam/coq-8.8.2/bin/coqtop")))
+  (add-to-list 'exec-path "~/.local/bin/")
+
+  (setq avy-keys '(?u ?i ?a ?e ?n ?r ?t))
   )
 
 (defun dotspacemacs/user-config ()
@@ -213,11 +225,70 @@ user code."
 layers configuration. You are free to put any user code."
   (setq powerline-default-separator 'arrow-fade)
   (setq neo-theme 'arrow)
-  (linum-relative-global-mode)
+  ;; (linum-relative-global-mode)
+
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
   ;; Use guile-scheme
   (setq geiser-active-implementations '(guile))
+
+  ;; eclim config
+  (setq eclim-eclipse-dirs "/home/user/.eclipse"
+        eclim-executable "/home/user/.eclipse/org.eclipse.platform_4.6.3_155965261_linux_gtk_x86_64/eclim"
+        eclimd-executable "/home/user/.eclipse/org.eclipse.platform_4.6.3_155965261_linux_gtk_x86_64/eclimd"
+        eclimd-default-workspace "/home/user/src/eclipse"
+        eclimd-wait-for-process t)
+
+  (evil-leader/set-key-for-mode 'java-mode "pr" 'eclim-java-run-run)
+
+  ;; Custom org mode keybinds
+  (with-eval-after-load 'evil-org
+    (define-key evil-org-mode-map (kbd "<insert-state> C-j") 'org-metadown)
+    (define-key evil-org-mode-map (kbd "<insert-state> C-k") 'org-metaup)
+    (define-key evil-org-mode-map (kbd "<insert-state> C-h") 'org-metaleft)
+    (define-key evil-org-mode-map (kbd "<insert-state> C-l") 'org-metaright)
+    (define-key evil-org-mode-map (kbd "<insert-state> C-t") 'org-todo))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coq-prog-name (concat (getenv "HOME") "/.opam/coq-8.8.2/bin/coqtop"))
+ '(package-selected-packages
+   (quote
+    (srcery-theme markdown-toc markdown-mode lv gh-md transient web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode treepy graphql emmet-mode company-web web-completion-data ein skewer-mode request-deferred websocket deferred js2-mode simple-httpd utop tuareg caml ocp-indent merlin winum white-sand-theme solarized-theme rebecca-theme org-category-capture org-mime madhat2r-theme dash-functional fuzzy exotica-theme ghub let-alist ob-sml sml-mode auctex-latexmk company-auctex auctex plantuml-mode org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot company-emacs-eclim eclim z3-mode xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help smeargle orgit org magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor stickyfunc-enhance srefactor company-coq company-math math-symbol-lists zonokai-theme zenburn-theme zen-and-art-theme yapfify ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacemacs-theme spaceline powerline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme restart-emacs request rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme professional-theme popwin planet-theme pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pastels-on-dark-theme paradox spinner organic-green-theme org-plus-contrib org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree naquadah-theme mustang-theme move-text monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme lush-theme lorem-ipsum live-py-mode linum-relative link-hint light-soap-theme jbeans-theme jazz-theme ir-black-theme intero inkpot-theme info+ indent-guide ido-vertical-mode hydra hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make projectile helm-hoogle helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag hc-zenburn-theme haskell-snippets gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio go-guru go-eldoc geiser gandalf-theme flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-haskell flycheck pkg-info epl flx-ido flx flatui-theme flatland-theme firebelly-theme fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight espresso-theme dumb-jump dracula-theme django-theme disaster diminish define-word darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cython-mode cyberpunk-theme company-statistics company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda company column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized cmm-mode cmake-mode clues-theme clean-aindent-mode clang-format cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme bind-map bind-key badwolf-theme auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary anti-zenburn-theme anaconda-mode pythonic f dash s ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup quelpa package-build apropospriate-theme))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(proof-eager-annotation-face ((t (:background "medium blue"))))
+ '(proof-error-face ((t (:background "dark red"))))
+ '(proof-warning-face ((t (:background "indianred3")))))
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coq-prog-name (concat (getenv "HOME") "/.opam/coq-8.8.2/bin/coqtop"))
+ '(package-selected-packages
+   (quote
+    (vmd-mode mmm-mode markdown-toc markdown-mode gh-md emoji-cheat-sheet-plus company-emoji web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode treepy graphql emmet-mode company-web web-completion-data ein skewer-mode request-deferred websocket deferred js2-mode simple-httpd utop tuareg caml ocp-indent merlin winum white-sand-theme solarized-theme rebecca-theme org-category-capture org-mime madhat2r-theme dash-functional fuzzy exotica-theme ghub let-alist ob-sml sml-mode auctex-latexmk company-auctex auctex plantuml-mode org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot company-emacs-eclim eclim z3-mode xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help smeargle orgit org magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor stickyfunc-enhance srefactor company-coq company-math math-symbol-lists zonokai-theme zenburn-theme zen-and-art-theme yapfify ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacemacs-theme spaceline powerline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme restart-emacs request rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme professional-theme popwin planet-theme pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pastels-on-dark-theme paradox spinner organic-green-theme org-plus-contrib org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree naquadah-theme mustang-theme move-text monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme lush-theme lorem-ipsum live-py-mode linum-relative link-hint light-soap-theme jbeans-theme jazz-theme ir-black-theme intero inkpot-theme info+ indent-guide ido-vertical-mode hydra hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make projectile helm-hoogle helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag hc-zenburn-theme haskell-snippets gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio go-guru go-eldoc geiser gandalf-theme flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-haskell flycheck pkg-info epl flx-ido flx flatui-theme flatland-theme firebelly-theme fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight espresso-theme dumb-jump dracula-theme django-theme disaster diminish define-word darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cython-mode cyberpunk-theme company-statistics company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda company column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized cmm-mode cmake-mode clues-theme clean-aindent-mode clang-format cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme bind-map bind-key badwolf-theme auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary anti-zenburn-theme anaconda-mode pythonic f dash s ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup quelpa package-build apropospriate-theme))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(proof-eager-annotation-face ((t (:background "medium blue"))))
+ '(proof-error-face ((t (:background "dark red"))))
+ '(proof-warning-face ((t (:background "indianred3")))))
+)
