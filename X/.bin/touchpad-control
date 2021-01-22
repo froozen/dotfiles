@@ -1,9 +1,9 @@
 #!/bin/sh
 
-touchpadId=14
+touchpadId=10
 touchpadProps=`xinput list-props $touchpadId`
-pattern="Device Enabled \\(140\\): *1"
-if [[ $touchpadProps == *"Synaptics TouchPad"* ]]
+pattern="Device Enabled \\(142\\): *1"
+if [[ $touchpadProps == *"Elan Touchpad"* ]]
     then
     echo $touchpadProps | egrep -qo "$pattern"
     case $1 in
@@ -18,9 +18,9 @@ if [[ $touchpadProps == *"Synaptics TouchPad"* ]]
         "query"*)
             if [[ $? -eq 0 ]]
             then
-                echo "<fc=#ff0000><icon=mouse_01.xbm/></fc>"
-            else
-                echo "<icon=mouse_01.xbm/>"
+                echo ""
+                echo ""
+                echo "#FF0000"
             fi
             ;;
     esac

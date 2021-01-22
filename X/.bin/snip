@@ -1,0 +1,3 @@
+#!/bin/env bash
+
+python /home/user/.bin/snip.py $*

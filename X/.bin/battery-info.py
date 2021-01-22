@@ -1,8 +1,8 @@
 import utils
 
-full_message = "<icon=bat_full_01.xbm/> 100% "
-charging_message = "<icon=bat_low_01.xbm/> %s - %s "
-discharging_message = "<fc=#ff0000><icon=bat_low_01.xbm/> %s - %s</fc> "
+full_message = "F"
+charging_message = "%s - %s C"
+discharging_message = "%s - %s D"
 
 def get_acpi_out():
     acpi_out, success = utils.call_command(["acpi"])
