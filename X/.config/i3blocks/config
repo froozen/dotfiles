@@ -2,6 +2,9 @@ separator_block_width=14
 color=#6074c8
 interval=5
 
+[spotify]
+command=/home/user/.bin/spotify-query.sh
+
 [cpu]
 label=CPU 
 command=echo "$(top -bn1 -p1 | grep "Cpu(s)" | awk '{print $2 + $4}')%"
